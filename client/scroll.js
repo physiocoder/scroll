@@ -1,4 +1,4 @@
-Meteor.subscribeWithPagination('Utenti', 10);
+utentiHandle = Meteor.subscribeWithPagination('Utenti', 10);
 
 Template.utenti.helpers({
   utente: function() {
@@ -6,3 +6,19 @@ Template.utenti.helpers({
   }
 })
 
+Template.lista.events({
+	'scroll #flux': function(event) {
+		event.preventDefault();
+		e = $(event.target);
+		if(e.scrollTop() + e.innerHeight()>=e[0].scrollHeight) {
+		    
+		    if (Utenti.find().count() >= utentiHandle.loaded()) {
+		    	utentiHandle.loadNextPage();
+		    }
+		}
+	},
+});
+
+Template.lista.rendered = function() {
+	console.log("added");
+};

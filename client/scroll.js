@@ -1,4 +1,4 @@
-Meteor.subscribe('Utenti');
+Meteor.subscribeWithPagination('Utenti', 10);
 
 Template.utenti.helpers({
   utente: function() {

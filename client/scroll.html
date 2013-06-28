@@ -1,18 +1,19 @@
 <body>
-  <div class="container">Paginazione</div>
+  <div class="lead">Paginazione</div>
   {{> lista}}
 </body>
 
 <template name="lista">
-	<div id="flux" style="overflow-y: auto; width:300px; height: 150px;">
-		{{> utenti}}
-	</div>
-</template>
-
-<template name="utenti">
-	{{#each utente}}
-        <div class="utente">
-          <p>{{nome}} - {{cognome}}</p>
-        </div>
-     {{/each}}
+  <div id="flux" style="overflow-y: auto; width: 300px; height: 150px;">
+    <table class="table-striped" style="width: 100%;">
+      <tbody>
+        {{#each utente}}
+          <tr>
+            <td>{{nome}}</td>
+            <td>{{cognome}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
 </template>
